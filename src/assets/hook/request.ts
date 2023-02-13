@@ -21,7 +21,7 @@ export async function request(parUrl: string, parMethod = 'GET', parData = null)
 
         response = await fetch(parUrl, httpObject);
 
-        return await response.status;
+        return await response;
     } catch (e: any) {
         console.warn("Error:", e.message);
     }

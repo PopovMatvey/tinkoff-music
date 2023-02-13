@@ -1,11 +1,10 @@
 /* Стили "Шапки" */
 header{
-    width: 100%;
-    width: 100%;
-    padding: 20px 0px;
-    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    height: auto;
+    padding: 20px 0px;
 }

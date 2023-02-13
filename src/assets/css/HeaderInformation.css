@@ -1,9 +1,9 @@
 /* Стили информации "Шапки" */
 .header-information {
-    width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
+    width: 100%;
 }
 
 .header-information h1 {
@@ -12,5 +12,7 @@
 }
 
 .header-information img {
-    height: 100px;
+    width: 20%;
+    height: auto;
+    margin-left: 10%;
 }
