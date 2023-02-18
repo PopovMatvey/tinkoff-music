@@ -1,10 +1,14 @@
 import React, { DetailedHTMLProps, HTMLAttributes, MouseEventHandler, useEffect } from "react";
 import "../css/CardTrack.css"
+import { useModalFlag } from "../hook/useModalFlaf";
 import { CardTrackProps } from "../types/CardTrackProps";
 
 export function CardTrack(props: CardTrackProps) {
 
+    const { modalFlag, setModalFlag } = useModalFlag();
+
     const hendlerTrackCardClick = (event: React.MouseEvent<HTMLDivElement>) => {
+        setModalFlag(true);
         // console.log(props);
     }
 

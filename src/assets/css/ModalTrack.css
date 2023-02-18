@@ -13,7 +13,7 @@
     left: 35%;
     width: 30%;
     height: 60%;
-    min-width: 300px;
+    min-width: 350px;
     min-height: 300px;
     padding: 50px;
     border-radius: 50px;
@@ -32,16 +32,26 @@
     border-radius: 30px;
 }
 
-.modal-container audio {
-    border: 2px solid black;
+.modal-container_audio {
     width: 100%;
+    height: 50px;
+    padding: 10px;
 }
 
+.modal-container_audio audio {
+    width: 100%;
+    height: 100%;
+    filter: invert(23%);
+}
+
+.modal-container_audio audio::-webkit-media-controls-play-button{
+    display: none;
+}
 
 .modal-container h1 {
     font-family: "BerlinTypeBold";
     font-size: 36px;
-    margin: 20px 0px;
+    margin: 0px 0px 10px;
 }
 
 
@@ -54,7 +64,7 @@
     justify-content: space-between;
     align-items: center;
     height: auto;
-    margin: 10px 0px;
+    margin: 5px 0px;
 }
 
 .modal-container_tool-bar button {
@@ -62,7 +72,7 @@
     transition: 0.5s all;
 }
 
-.modal-container_tool-bar button:active{
+.modal-container_tool-bar button:active {
     transform: scale(1.3);
 }
 
@@ -86,7 +96,7 @@
 
 .modal-container_tool-bar__next {
     width: 14px;
-    height: 14px;    
+    height: 14px;
     transform: rotate(20);
     background: url('../images//tool-bar/next.png') 0% 0% / 100% 100% no-repeat;
 
