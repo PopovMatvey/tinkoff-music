@@ -1,6 +1,6 @@
-## Music platform
+# Music platform
 
-# Deploy server
+## Deploy server
 
 - Come to directoty "Server"
 - Read README.md
