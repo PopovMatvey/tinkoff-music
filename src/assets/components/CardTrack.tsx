@@ -1,20 +1,22 @@
-import React, { DetailedHTMLProps, HTMLAttributes, MouseEventHandler, useEffect } from "react";
+import React, { DetailedHTMLProps, HTMLAttributes, MouseEventHandler, useEffect, useState } from "react";
 import "../css/CardTrack.css"
 import { useModalFlag } from "../hook/useModalFlaf";
 import { CardTrackProps } from "../types/CardTrackProps";
+import { songsData } from "../data/audios";
 
 export function CardTrack(props: CardTrackProps) {
 
     const { modalFlag, setModalFlag } = useModalFlag();
+    const [currentTrack, setCurrentTrack] = useState(songsData[1]);
 
     const hendlerTrackCardClick = (event: React.MouseEvent<HTMLDivElement>) => {
         setModalFlag(true);
-        // console.log(props);
+        setCurrentTrack(props);
     }
 
     useEffect(() => {
-        // console.log(props);
-    }, [])
+        console.log(currentTrack);
+    }, [currentTrack])
 
     return (
         <>

@@ -3,5 +3,7 @@ export interface CardTrackProps {
     nameTrack:string;
     authorTrack:string;
     preViewImagePath:string;
-    trackPath:string;
+    trackPath:string; 
+    progress: number,
+    length: number,
 }

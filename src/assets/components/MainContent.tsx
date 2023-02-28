@@ -11,6 +11,8 @@ export function MainContent() {
             authorTrack: "seonfoi",
             preViewImagePath: "/tracks/images/JackBoys.jpg",
             trackPath: "/tracks/audio/muzlome_Travis_Scott_-_SICKO_MODE_57796090.mp3",
+            progress: 0,
+            length: 0,
         },
         {
             key: 1,
@@ -18,6 +20,8 @@ export function MainContent() {
             authorTrack: "seonfoi",
             preViewImagePath: "/tracks/images/Travis_Scott_Astroworld.jpg",
             trackPath: "/tracks/audio/travis_scott_-_goosebumps_feat_kendrick_lamar_muzati.net.mp3",
+            progress: 0,
+            length: 0,
         },
         {
             key: 2,
@@ -25,6 +29,8 @@ export function MainContent() {
             authorTrack: "seonfoi",
             preViewImagePath: "/tracks/images/JackBoys.jpg",
             trackPath: "/tracks/audio/muzlome_Travis_Scott_-_SICKO_MODE_57796090.mp3",
+            progress: 0,
+            length: 0,
         },
         {
             key: 3,
@@ -32,6 +38,8 @@ export function MainContent() {
             authorTrack: "seonfoi",
             preViewImagePath: "/tracks/images/Travis_Scott_Astroworld.jpg",
             trackPath: "/tracks/audio/travis_scott_-_goosebumps_feat_kendrick_lamar_muzati.net.mp3",
+            progress: 0,
+            length: 0,
         },
         {
             key: 4,
@@ -39,6 +47,8 @@ export function MainContent() {
             authorTrack: "seonfoi",
             preViewImagePath: "/tracks/images/JackBoys.jpg",
             trackPath: "/tracks/audio/muzlome_Travis_Scott_-_SICKO_MODE_57796090.mp3",
+            progress: 0,
+            length: 0,
         },
         {
             key: 5,
@@ -46,6 +56,8 @@ export function MainContent() {
             authorTrack: "seonfoi",
             preViewImagePath: "/tracks/images/Travis_Scott_Astroworld.jpg",
             trackPath: "/tracks/audio/travis_scott_-_goosebumps_feat_kendrick_lamar_muzati.net.mp3",
+            progress: 0,
+            length: 0,
         },
         {
             key: 6,
@@ -53,6 +65,8 @@ export function MainContent() {
             authorTrack: "seonfoi",
             preViewImagePath: "/tracks/images/JackBoys.jpg",
             trackPath: "/tracks/audio/muzlome_Travis_Scott_-_SICKO_MODE_57796090.mp3",
+            progress: 0,
+            length: 0,
         },
         {
             key: 7,
@@ -60,6 +74,8 @@ export function MainContent() {
             authorTrack: "seonfoi",
             preViewImagePath: "/tracks/images/Travis_Scott_Astroworld.jpg",
             trackPath: "/tracks/audio/travis_scott_-_goosebumps_feat_kendrick_lamar_muzati.net.mp3",
+            progress: 0,
+            length: 0,
         },
     ];
 
@@ -78,6 +94,8 @@ export function MainContent() {
                                 authorTrack={element.authorTrack}
                                 preViewImagePath={element.preViewImagePath}
                                 trackPath={element.trackPath}
+                                progress ={element.progress}
+                                length={element.length}
                             />)
                         )}
                     </div>
@@ -90,6 +108,8 @@ export function MainContent() {
                 authorTrack={assortimentTracksArray[0].authorTrack}
                 preViewImagePath={assortimentTracksArray[0].preViewImagePath}
                 trackPath={assortimentTracksArray[0].trackPath}
+                progress ={assortimentTracksArray[0].progress}
+                length={assortimentTracksArray[0].length}
             />
         </>
     )
