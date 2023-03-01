@@ -1,6 +1,9 @@
 // Request on server
 // url - url request
 // method - http method
+
+import axios from "axios";
+
 // data - json object (requested object)
 export async function request(parUrl: string, parMethod = 'GET', parData = null) {
     try {
@@ -21,7 +24,7 @@ export async function request(parUrl: string, parMethod = 'GET', parData = null)
 
         response = await fetch(parUrl, httpObject);
 
-        return await response;
+        return response;
     } catch (e: any) {
         console.warn("Error:", e.message);
     }

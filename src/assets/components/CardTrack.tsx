@@ -15,7 +15,7 @@ export function CardTrack(props: CardTrackProps) {
     }
 
     useEffect(() => {
-        console.log(currentSong);
+        // console.log(currentSong);
     }, [currentSong, modalFlag])
 
     return (

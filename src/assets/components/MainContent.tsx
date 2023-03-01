@@ -8,6 +8,7 @@ import { refModal } from "../hook/refModal";
 import { songsData } from "../data/audios";
 import { useModalFlag } from "../hook/useModalFlaf";
 import { BsFillPauseCircleFill, BsFillPlayCircleFill, BsFillSkipEndCircleFill, BsFillSkipStartCircleFill } from "react-icons/bs";
+import { useAudioArray } from "../hook/audioArray";
 
 export function MainContent() {
     const { modalFlag, setModalFlag, currentSong, setCurrentSong } = useModalFlag();
@@ -15,6 +16,7 @@ export function MainContent() {
     const [songs] = useState(songsData);
     const [isPlaying, setIsPlaying] = useState(false);
     const audioElement = useRef(document.createElement("audio"));
+    const arrayAudios = useAudioArray();
 
     // Обработка области вокруг модального окна
     const heandlerModalClickArea = (event: React.MouseEvent<HTMLDivElement>) => {
