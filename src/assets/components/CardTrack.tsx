@@ -6,17 +6,17 @@ import { songsData } from "../data/audios";
 
 export function CardTrack(props: CardTrackProps) {
 
-    const { modalFlag, setModalFlag } = useModalFlag();
+    const { modalFlag, setModalFlag, setCurrentSong, currentSong } = useModalFlag();
     const [currentTrack, setCurrentTrack] = useState(songsData[1]);
 
     const hendlerTrackCardClick = (event: React.MouseEvent<HTMLDivElement>) => {
         setModalFlag(true);
-        setCurrentTrack(props);
+        setCurrentSong(props);
     }
 
     useEffect(() => {
-        console.log(currentTrack);
-    }, [currentTrack])
+        console.log(currentSong);
+    }, [currentSong, modalFlag])
 
     return (
         <>

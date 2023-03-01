@@ -1,83 +1,96 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import '../css/MainContent.css'
+import "../css/ModalTrack.css"
+import "../css/CardTrack.css"
 import { CardTrack } from "./CardTrack";
 import { ModalTrack } from "./ModalTrack";
+import { refModal } from "../hook/refModal";
+import { songsData } from "../data/audios";
+import { useModalFlag } from "../hook/useModalFlaf";
+import { BsFillPauseCircleFill, BsFillPlayCircleFill, BsFillSkipEndCircleFill, BsFillSkipStartCircleFill } from "react-icons/bs";
 
 export function MainContent() {
-    const assortimentTracksArray = [
-        {
-            key: 0,
-            nameTrack: "sdfdr",
-            authorTrack: "seonfoi",
-            preViewImagePath: "/tracks/images/JackBoys.jpg",
-            trackPath: "/tracks/audio/muzlome_Travis_Scott_-_SICKO_MODE_57796090.mp3",
-            progress: 0,
-            length: 0,
-        },
-        {
-            key: 1,
-            nameTrack: "sdfdr",
-            authorTrack: "seonfoi",
-            preViewImagePath: "/tracks/images/Travis_Scott_Astroworld.jpg",
-            trackPath: "/tracks/audio/travis_scott_-_goosebumps_feat_kendrick_lamar_muzati.net.mp3",
-            progress: 0,
-            length: 0,
-        },
-        {
-            key: 2,
-            nameTrack: "sdfdr",
-            authorTrack: "seonfoi",
-            preViewImagePath: "/tracks/images/JackBoys.jpg",
-            trackPath: "/tracks/audio/muzlome_Travis_Scott_-_SICKO_MODE_57796090.mp3",
-            progress: 0,
-            length: 0,
-        },
-        {
-            key: 3,
-            nameTrack: "sdfdr",
-            authorTrack: "seonfoi",
-            preViewImagePath: "/tracks/images/Travis_Scott_Astroworld.jpg",
-            trackPath: "/tracks/audio/travis_scott_-_goosebumps_feat_kendrick_lamar_muzati.net.mp3",
-            progress: 0,
-            length: 0,
-        },
-        {
-            key: 4,
-            nameTrack: "sdfdr",
-            authorTrack: "seonfoi",
-            preViewImagePath: "/tracks/images/JackBoys.jpg",
-            trackPath: "/tracks/audio/muzlome_Travis_Scott_-_SICKO_MODE_57796090.mp3",
-            progress: 0,
-            length: 0,
-        },
-        {
-            key: 5,
-            nameTrack: "sdfdr",
-            authorTrack: "seonfoi",
-            preViewImagePath: "/tracks/images/Travis_Scott_Astroworld.jpg",
-            trackPath: "/tracks/audio/travis_scott_-_goosebumps_feat_kendrick_lamar_muzati.net.mp3",
-            progress: 0,
-            length: 0,
-        },
-        {
-            key: 6,
-            nameTrack: "sdfdr",
-            authorTrack: "seonfoi",
-            preViewImagePath: "/tracks/images/JackBoys.jpg",
-            trackPath: "/tracks/audio/muzlome_Travis_Scott_-_SICKO_MODE_57796090.mp3",
-            progress: 0,
-            length: 0,
-        },
-        {
-            key: 7,
-            nameTrack: "sdfdr",
-            authorTrack: "seonfoi",
-            preViewImagePath: "/tracks/images/Travis_Scott_Astroworld.jpg",
-            trackPath: "/tracks/audio/travis_scott_-_goosebumps_feat_kendrick_lamar_muzati.net.mp3",
-            progress: 0,
-            length: 0,
-        },
-    ];
+    const { modalFlag, setModalFlag, currentSong, setCurrentSong } = useModalFlag();
+    const clickRef = useRef(document.createElement("div"));
+    const [songs] = useState(songsData);
+    const [isPlaying, setIsPlaying] = useState(false);
+    const audioElement = useRef(document.createElement("audio"));
+
+    // Обработка области вокруг модального окна
+    const heandlerModalClickArea = (event: React.MouseEvent<HTMLDivElement>) => {
+        setModalFlag(false);
+    }
+
+    // При проигрывании
+    const onPlaying = () => {
+        const commonTimeSong = audioElement.current.duration;
+        const currentTimeSonf = audioElement.current.currentTime;
+
+        setCurrentSong({ ...currentSong, "progress": currentTimeSonf / commonTimeSong * 100, "length": commonTimeSong })
+    }
+
+    // нажатие на кноку "Пуск"
+    const heandlerPlayPause = () => {
+        setIsPlaying(!isPlaying);
+    }
+
+    // Изменение времени в прогресс баре
+    const heandlerChangeCurrentTime = (event: any) => {
+        let currentTime = Number(clickRef.current?.clientWidth);
+        const offset = event.nativeEvent.offsetX;
+        const progressBlock = offset / currentTime * 100;
+
+        audioElement.current.currentTime = progressBlock / 100 * currentSong.length;
+    }
+
+    // Предыдущая песня
+    const heandlerSkipBack = () => {
+        const index = songs.findIndex((parSong: { nameTrack: string; }) => parSong.nameTrack === currentSong.nameTrack);
+
+        if (index === 0) {
+            setCurrentSong(songs[songs.length - 1])
+        }
+        else {
+            setCurrentSong(songs[index - 1])
+        }
+
+        setIsPlaying(true);
+        audioElement.current.currentTime = 0;
+    }
+
+    // Следующая песня
+    const heandlerSkipToNext = () => {
+        const indexNext = songs.findIndex((parSong: { nameTrack: string; }) => parSong.nameTrack === currentSong.nameTrack);
+
+        if (indexNext === songs.length - 1) {
+            setCurrentSong(songs[0])
+        }
+        else {
+            setCurrentSong(songs[indexNext + 1])
+        }
+
+        setIsPlaying(true);
+        audioElement.current.currentTime = 0;
+    }
+
+    // проиграть аудио
+    const playAudio = () => {
+        audioElement.current.play();
+    }
+
+    // Остановить аудио
+    const stopAudio = () => {
+        audioElement.current.pause();
+    }
+
+    useEffect(() => {
+        if (isPlaying) {
+            playAudio();
+        }
+        else {
+            stopAudio();
+        }
+    }, [isPlaying]);
 
     return (
         <>
@@ -86,31 +99,53 @@ export function MainContent() {
                     <h1>Главная</h1>
                     <h2>Лучшие треки</h2>
                     <div className="main-content_container__tracks">
-                        {assortimentTracksArray.map((element: any) => (
-                            <CardTrack
-                                key={element.key}
-                                index={element.key}
-                                nameTrack={element.nameTrack}
-                                authorTrack={element.authorTrack}
-                                preViewImagePath={element.preViewImagePath}
-                                trackPath={element.trackPath}
-                                progress ={element.progress}
-                                length={element.length}
-                            />)
+                        {songsData.map((element: any) => (
+                            <>
+                                <div className="card-track" key={element.index} onClick={
+                                    () => {
+                                        setModalFlag(true);
+                                        setCurrentSong(songsData[element.index]);
+                                    }
+                                }>
+                                    <div className="card-track_img-container">
+                                        <img src={element.preViewImagePath} alt="превью" />
+                                    </div>
+                                    <h1>{element.nameTrack}</h1>
+                                    <h2>{element.authorTrack}</h2>
+                                </div>
+                            </>
+                        )
                         )}
                     </div>
                 </div>
             </div>
-            <ModalTrack
-                key={assortimentTracksArray[0].key}
-                index={assortimentTracksArray[0].key}
-                nameTrack={assortimentTracksArray[0].nameTrack}
-                authorTrack={assortimentTracksArray[0].authorTrack}
-                preViewImagePath={assortimentTracksArray[0].preViewImagePath}
-                trackPath={assortimentTracksArray[0].trackPath}
-                progress ={assortimentTracksArray[0].progress}
-                length={assortimentTracksArray[0].length}
-            />
+            {
+                modalFlag &&
+                <>
+                    <div className="modal-background" onClick={heandlerModalClickArea} />
+                    <div className="modal-container" key={currentSong.index}>
+                        <div className="modal-container_img">
+                            <img src={currentSong.preViewImagePath} alt="превью" />
+                        </div>
+                        <div className="modal-container_navigation">
+                            <div className="modal-container_navigation_wrapper" onClick={heandlerChangeCurrentTime} ref={clickRef}>
+                                <div className="modal-container_seek_bar" style={{ width: `${currentSong.progress + "%"}` }}></div>
+                            </div>
+                        </div>
+                        <div className="modal-container_audio" >
+                            <audio key={currentSong.index} src={currentSong.trackPath} ref={audioElement} onTimeUpdate={onPlaying} />
+                        </div>
+                        <h1>{currentSong.nameTrack}</h1>
+                        <h2>{currentSong.authorTrack}</h2>
+                        <div className="modal-container_tool-bar">
+                            <div className="modal-container_controls">
+                                <BsFillSkipStartCircleFill className='modal-container_btn_action' onClick={heandlerSkipBack} />
+                                {isPlaying ? <BsFillPauseCircleFill className='modal-container_btn_action modal-container_pp' onClick={heandlerPlayPause} /> : <BsFillPlayCircleFill className='btn_action modal-container_pp' onClick={heandlerPlayPause} />}
+                                <BsFillSkipEndCircleFill className='modal-container_btn_action' onClick={heandlerSkipToNext} />
+                            </div></div>
+                    </div>
+                </>
+            }
         </>
     )
 }
