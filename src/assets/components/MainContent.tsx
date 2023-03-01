@@ -5,18 +5,18 @@ import "../css/CardTrack.css"
 import { CardTrack } from "./CardTrack";
 import { ModalTrack } from "./ModalTrack";
 import { refModal } from "../hook/refModal";
-import { songsData } from "../data/audios";
 import { useModalFlag } from "../hook/useModalFlaf";
 import { BsFillPauseCircleFill, BsFillPlayCircleFill, BsFillSkipEndCircleFill, BsFillSkipStartCircleFill } from "react-icons/bs";
 import { useAudioArray } from "../hook/audioArray";
+import { useAudioData } from "../data/audios";
 
 export function MainContent() {
+    const { songsData } = useAudioData();
     const { modalFlag, setModalFlag, currentSong, setCurrentSong } = useModalFlag();
     const clickRef = useRef(document.createElement("div"));
     const [songs] = useState(songsData);
     const [isPlaying, setIsPlaying] = useState(false);
     const audioElement = useRef(document.createElement("audio"));
-    const arrayAudios = useAudioArray();
 
     // Обработка области вокруг модального окна
     const heandlerModalClickArea = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -47,13 +47,13 @@ export function MainContent() {
 
     // Предыдущая песня
     const heandlerSkipBack = () => {
-        const index = songs.findIndex((parSong: { nameTrack: string; }) => parSong.nameTrack === currentSong.nameTrack);
+        const index = songsData.findIndex((parSong: { nameTrack: string; }) => parSong.nameTrack === currentSong.nameTrack);
 
         if (index === 0) {
-            setCurrentSong(songs[songs.length - 1])
+            setCurrentSong(songsData[songsData.length - 1])
         }
         else {
-            setCurrentSong(songs[index - 1])
+            setCurrentSong(songsData[index - 1])
         }
 
         setIsPlaying(true);
@@ -62,13 +62,13 @@ export function MainContent() {
 
     // Следующая песня
     const heandlerSkipToNext = () => {
-        const indexNext = songs.findIndex((parSong: { nameTrack: string; }) => parSong.nameTrack === currentSong.nameTrack);
+        const indexNext = songsData.findIndex((parSong: { nameTrack: string; }) => parSong.nameTrack === currentSong.nameTrack);
 
-        if (indexNext === songs.length - 1) {
-            setCurrentSong(songs[0])
+        if (indexNext === songsData.length - 1) {
+            setCurrentSong(songsData[0])
         }
         else {
-            setCurrentSong(songs[indexNext + 1])
+            setCurrentSong(songsData[indexNext + 1])
         }
 
         setIsPlaying(true);

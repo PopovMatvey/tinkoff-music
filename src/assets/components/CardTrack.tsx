@@ -1,11 +1,12 @@
 import React, { DetailedHTMLProps, HTMLAttributes, MouseEventHandler, useEffect, useState } from "react";
 import "../css/CardTrack.css"
+import { useAudioData } from "../data/audios";
 import { useModalFlag } from "../hook/useModalFlaf";
 import { CardTrackProps } from "../types/CardTrackProps";
-import { songsData } from "../data/audios";
+// import { songsData } from "../data/audios";
 
 export function CardTrack(props: CardTrackProps) {
-
+    const { songsData } = useAudioData();
     const { modalFlag, setModalFlag, setCurrentSong, currentSong } = useModalFlag();
     const [currentTrack, setCurrentTrack] = useState(songsData[1]);
 

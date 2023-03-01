@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { songsData } from "../data/audios";
+import { useAudioData } from "../data/audios";
 
 export function useModalFlag() {
+    const { songsData } = useAudioData();
     const [modalFlag, setModalFlag] = useState(false);
     const [currentSong, setCurrentSong] = useState(songsData[1]);
 
-    return { modalFlag, setModalFlag,currentSong, setCurrentSong }
+    return { modalFlag, setModalFlag, currentSong, setCurrentSong }
 }

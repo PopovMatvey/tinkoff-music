@@ -16,7 +16,7 @@ export function useAudioArray() {
 
     useEffect(() => {
         featchAudioArray();
-    }, [arrayAudio])
+    }, [])
 
     return { arrayAudio };
 }
