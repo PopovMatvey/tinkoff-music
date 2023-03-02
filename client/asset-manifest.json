@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/static/css/main.5d57e4ba.css",
+    "main.js": "/static/js/main.57aef57b.js",
+    "static/js/787.fcf432be.chunk.js": "/static/js/787.fcf432be.chunk.js",
+    "static/media/BerlinType-Bold.otf": "/static/media/BerlinType-Bold.9dab94178b1737b870ba.otf",
+    "static/media/BerlinType-Regular.otf": "/static/media/BerlinType-Regular.1bbba4deb8775ccac9dc.otf",
+    "static/media/tinkoff-music-logo.png": "/static/media/tinkoff-music-logo.89985c3a6970f40ff2a9.png",
+    "static/media/Concrete-Regular.otf": "/static/media/Concrete-Regular.fcb1090140aa5427f444.otf",
+    "index.html": "/index.html",
+    "main.5d57e4ba.css.map": "/static/css/main.5d57e4ba.css.map",
+    "main.57aef57b.js.map": "/static/js/main.57aef57b.js.map",
+    "787.fcf432be.chunk.js.map": "/static/js/787.fcf432be.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5d57e4ba.css",
+    "static/js/main.57aef57b.js"
+  ]
+}
