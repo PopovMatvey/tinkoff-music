@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+// import React, { useEffect, useRef, useState } from "react";
 import "../css/ModalTrack.css"
 // import { songsData } from "../data/audios";
-import { useModalFlag } from "../hook/useModalFlaf";
+// import { useModalFlag } from "../hook/useModalFlaf";
 import { CardTrackProps } from "../types/CardTrackProps";
-import { BsFillPlayCircleFill, BsFillPauseCircleFill, BsFillSkipStartCircleFill, BsFillSkipEndCircleFill } from 'react-icons/bs';
+// import { BsFillPlayCircleFill, BsFillPauseCircleFill, BsFillSkipStartCircleFill, BsFillSkipEndCircleFill } from 'react-icons/bs';
 // import { refModal } from "../hook/refNavigatorBarElement";
-import { useTrackData } from "../data/audios";
+// import { useTrackData } from "../data/audios";
 
 export function ModalTrack(props: CardTrackProps) {
     // const { tracksData: songsData } = useTrackData();

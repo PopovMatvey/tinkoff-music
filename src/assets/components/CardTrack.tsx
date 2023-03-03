@@ -1,8 +1,8 @@
-import React, { DetailedHTMLProps, HTMLAttributes, MouseEventHandler, useEffect, useState } from "react";
+// import React, { DetailedHTMLProps, HTMLAttributes, MouseEventHandler, useEffect, useState } from "react";
 import "../css/CardTrack.css"
-import { useTrackData } from "../data/audios";
-import { useCurrentSong } from "../hook/useCurrentSong";
-import { useModalFlag } from "../hook/useModalFlaf";
+// import { useTrackData } from "../data/audios";
+// import { useCurrentSong } from "../hook/useCurrentSong";
+// import { useModalFlag } from "../hook/useModalFlaf";
 import { CardTrackProps } from "../types/CardTrackProps";
 // import { songsData } from "../data/audios";, setCurrentSong, currentSong
 

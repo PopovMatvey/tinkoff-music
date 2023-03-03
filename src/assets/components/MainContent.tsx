@@ -103,10 +103,10 @@ export function MainContent() {
                 <div className="main-content_container">
                     <h1>Главная</h1>
                     <h2>Лучшие треки</h2>
-                    <div className="main-content_container__tracks">
+                    <div className="main-content_container__tracks" >
                         {tracksData.map((element: any) => (
-                            <>
-                                <div className="card-track" key={element.index} onClick={
+                            <div className="card-track_container" key={element.index}>
+                                <div className="card-track" onClick={
                                     () => {
                                         setModalFlag(true);
                                         setCurrentTrack(tracksData[element.index]);
@@ -118,7 +118,7 @@ export function MainContent() {
                                     <h1>{element.nameTrack}</h1>
                                     <h2>{element.authorTrack}</h2>
                                 </div>
-                            </>
+                            </div>
                         )
                         )}
                     </div>
