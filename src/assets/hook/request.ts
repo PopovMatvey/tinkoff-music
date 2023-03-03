@@ -1,10 +1,7 @@
-// Request on server
-// url - url request
-// method - http method
-
-import axios from "axios";
-
-// data - json object (requested object)
+/*  Request on server
+    url - url request
+    method - http method
+    data - json object (requested object) */
 export async function request(parUrl: string, parMethod = 'GET', parData = null) {
     try {
         let response: Response;

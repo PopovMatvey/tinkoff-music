@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+// Массив треков (CardTrackProps[])
 export function useAudioArray() {
     const [arrayAudio, setArrayAudio] = useState([]);
 

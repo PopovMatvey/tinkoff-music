@@ -1,10 +1,8 @@
-import React, { useState } from "react";
-import { useAudioData } from "../data/audios";
+import { useState } from "react";
 
+// Флаг для модального окна (Булево)
 export function useModalFlag() {
-    const { songsData } = useAudioData();
     const [modalFlag, setModalFlag] = useState(false);
-    const [currentSong, setCurrentSong] = useState(songsData[1]);
 
-    return { modalFlag, setModalFlag, currentSong, setCurrentSong }
+    return { modalFlag, setModalFlag }
 }

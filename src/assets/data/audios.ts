@@ -1,13 +1,12 @@
-import { useEffect } from "react";
-import { useAudioArray } from "../hook/audioArray";
+import { useAudioArray as useTrackArray } from "../hook/useAudioArray";
 import { CardTrackProps } from "../types/CardTrackProps";
 
-
-export function useAudioData() {
-    const arrayAudios = useAudioArray();
-    const songsData: CardTrackProps[] = arrayAudios.arrayAudio;
+// Данные о треках
+export function useTrackData() {
+    const arrayAudios = useTrackArray();
+    const tracksData: CardTrackProps[] = arrayAudios.arrayAudio;
 
     return {
-        songsData
+        tracksData
     }
 }

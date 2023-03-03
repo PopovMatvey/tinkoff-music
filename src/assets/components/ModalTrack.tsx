@@ -4,99 +4,99 @@ import "../css/ModalTrack.css"
 import { useModalFlag } from "../hook/useModalFlaf";
 import { CardTrackProps } from "../types/CardTrackProps";
 import { BsFillPlayCircleFill, BsFillPauseCircleFill, BsFillSkipStartCircleFill, BsFillSkipEndCircleFill } from 'react-icons/bs';
-import { refModal } from "../hook/refModal";
-import { useAudioData } from "../data/audios";
+// import { refModal } from "../hook/refNavigatorBarElement";
+import { useTrackData } from "../data/audios";
 
 export function ModalTrack(props: CardTrackProps) {
-    const { songsData } = useAudioData();
-    const { modalFlag, setModalFlag } = useModalFlag();
-    const modalRef = refModal();
+    // const { tracksData: songsData } = useTrackData();
+    // const { modalFlag, setModalFlag } = useModalFlag();
+    // // const modalRef = refModal();
 
-    // 
-    const heandlerModalClickArea = (event: React.MouseEvent<HTMLDivElement>) => {
-        setModalFlag(false);
-    }
+    //
+    // const heandlerModalClickArea = (event: React.MouseEvent<HTMLDivElement>) => {
+    //     setModalFlag(false);
+    // }
 
-    const clickRef = useRef(document.createElement("div"));
-    const [songs] = useState(songsData);
-    const [isPlaying, setIsPlaying] = useState(false);
-    const [currentSong, setCurrentSong] = useState(songsData[1]);
-    const audioElement = useRef(document.createElement("audio"));
+    // const clickRef = useRef(document.createElement("div"));
+    // const [songs] = useState(songsData);
+    // const [isPlaying, setIsPlaying] = useState(false);
+    // const [currentSong, setCurrentSong] = useState(songsData[1]);
+    // const audioElement = useRef(document.createElement("audio"));
 
-    // При проигрывании
-    const onPlaying = () => {
-        const commonTimeSong = audioElement.current.duration;
-        const currentTimeSonf = audioElement.current.currentTime;
+    // // При проигрывании
+    // const onPlaying = () => {
+    //     const commonTimeSong = audioElement.current.duration;
+    //     const currentTimeSonf = audioElement.current.currentTime;
 
-        setCurrentSong({ ...currentSong, "progress": currentTimeSonf / commonTimeSong * 100, "length": commonTimeSong })
-    }
+    //     setCurrentSong({ ...currentSong, "progress": currentTimeSonf / commonTimeSong * 100, "length": commonTimeSong })
+    // }
 
-    // нажатие на кноку "Пуск"
-    const heandlerPlayPause = () => {
-        setIsPlaying(!isPlaying);
-    }
+    // // нажатие на кноку "Пуск"
+    // const heandlerPlayPause = () => {
+    //     setIsPlaying(!isPlaying);
+    // }
 
-    // Изменение времени в прогресс баре
-    const heandlerChangeCurrentTime = (event: any) => {
-        let currentTime = Number(clickRef.current?.clientWidth);
-        const offset = event.nativeEvent.offsetX;
-        const progressBlock = offset / currentTime * 100;
+    // // Изменение времени в прогресс баре
+    // const heandlerChangeCurrentTime = (event: any) => {
+    //     let currentTime = Number(clickRef.current?.clientWidth);
+    //     const offset = event.nativeEvent.offsetX;
+    //     const progressBlock = offset / currentTime * 100;
 
-        audioElement.current.currentTime = progressBlock / 100 * currentSong.length;
-    }
+    //     audioElement.current.currentTime = progressBlock / 100 * currentSong.length;
+    // }
 
-    // Предыдущая песня
-    const heandlerSkipBack = () => {
-        const index = songs.findIndex((parSong: { nameTrack: string; }) => parSong.nameTrack === currentSong.nameTrack);
+    // // Предыдущая песня
+    // const heandlerSkipBack = () => {
+    //     const index = songs.findIndex((parSong: { nameTrack: string; }) => parSong.nameTrack === currentSong.nameTrack);
 
-        if (index === 0) {
-            setCurrentSong(songs[songs.length - 1])
-        }
-        else {
-            setCurrentSong(songs[index - 1])
-        }
+    //     if (index === 0) {
+    //         setCurrentSong(songs[songs.length - 1])
+    //     }
+    //     else {
+    //         setCurrentSong(songs[index - 1])
+    //     }
 
-        setIsPlaying(true);
-        audioElement.current.currentTime = 0;
-    }
+    //     setIsPlaying(true);
+    //     audioElement.current.currentTime = 0;
+    // }
 
-    // Следующая песня
-    const heandlerSkipToNext = () => {
-        const indexNext = songs.findIndex((parSong: { nameTrack: string; }) => parSong.nameTrack === currentSong.nameTrack);
+    // // Следующая песня
+    // const heandlerSkipToNext = () => {
+    //     const indexNext = songs.findIndex((parSong: { nameTrack: string; }) => parSong.nameTrack === currentSong.nameTrack);
 
-        if (indexNext === songs.length - 1) {
-            setCurrentSong(songs[0])
-        }
-        else {
-            setCurrentSong(songs[indexNext + 1])
-        }
+    //     if (indexNext === songs.length - 1) {
+    //         setCurrentSong(songs[0])
+    //     }
+    //     else {
+    //         setCurrentSong(songs[indexNext + 1])
+    //     }
 
-        setIsPlaying(true);
-        audioElement.current.currentTime = 0;
-    }
+    //     setIsPlaying(true);
+    //     audioElement.current.currentTime = 0;
+    // }
 
-    // проиграть аудио
-    const playAudio = () => {
-        audioElement.current.play();
-    }
+    // // проиграть аудио
+    // const playAudio = () => {
+    //     audioElement.current.play();
+    // }
 
-    // Остановить аудио
-    const stopAudio = () => {
-        audioElement.current.pause();
-    }
+    // // Остановить аудио
+    // const stopAudio = () => {
+    //     audioElement.current.pause();
+    // }
 
-    useEffect(() => {
-        if (isPlaying) {
-            playAudio();
-        }
-        else {
-            stopAudio();
-        }
-    }, [isPlaying]);
+    // useEffect(() => {
+    //     if (isPlaying) {
+    //         playAudio();
+    //     }
+    //     else {
+    //         stopAudio();
+    //     }
+    // }, [isPlaying]);
 
     return (
         <>
-            {modalFlag &&
+            {/* {modalFlag &&
                 <>
                     <div className="modal-background" onClick={heandlerModalClickArea} />
                     <div className="modal-container">
@@ -121,8 +121,8 @@ export function ModalTrack(props: CardTrackProps) {
                                 <BsFillSkipEndCircleFill className='modal-container_btn_action' onClick={heandlerSkipToNext} />
                             </div></div>
                     </div>
-                </>
-            }
+                </> 
+            }*/}
         </>
     )
 }

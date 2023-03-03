@@ -1,22 +1,25 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect } from "react";
 import '../css/MainContent.css'
 import "../css/ModalTrack.css"
 import "../css/CardTrack.css"
-import { CardTrack } from "./CardTrack";
-import { ModalTrack } from "./ModalTrack";
-import { refModal } from "../hook/refModal";
-import { useModalFlag } from "../hook/useModalFlaf";
 import { BsFillPauseCircleFill, BsFillPlayCircleFill, BsFillSkipEndCircleFill, BsFillSkipStartCircleFill } from "react-icons/bs";
-import { useAudioArray } from "../hook/audioArray";
-import { useAudioData } from "../data/audios";
+import { useTrackData } from "../data/audios";
+import { useIsPlaying } from "../hook/useIsPlaying";
+import { useCurrentSong } from "../hook/useCurrentSong";
+import { useRefNavigatorBarElement } from "../hook/useRefNavigatorBarElement";
+import { useModalFlag } from "../hook/useModalFlaf";
+import { useRefAudioElement } from "../hook/useRefAudioElement";
+// import { CardTrack } from "./CardTrack";
+// import { ModalTrack } from "./ModalTrack";
 
+// Основной контент
 export function MainContent() {
-    const { songsData } = useAudioData();
-    const { modalFlag, setModalFlag, currentSong, setCurrentSong } = useModalFlag();
-    const clickRef = useRef(document.createElement("div"));
-    const [songs] = useState(songsData);
-    const [isPlaying, setIsPlaying] = useState(false);
-    const audioElement = useRef(document.createElement("audio"));
+    const { tracksData } = useTrackData();
+    const { currentTrack, setCurrentTrack } = useCurrentSong(tracksData);
+    const { modalFlag, setModalFlag } = useModalFlag();
+    const { isPlaying, setIsPlaying } = useIsPlaying();
+    const { navigatorBarElement } = useRefNavigatorBarElement();
+    const { audioElement } = useRefAudioElement();
 
     // Обработка области вокруг модального окна
     const heandlerModalClickArea = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -28,7 +31,7 @@ export function MainContent() {
         const commonTimeSong = audioElement.current.duration;
         const currentTimeSonf = audioElement.current.currentTime;
 
-        setCurrentSong({ ...currentSong, "progress": currentTimeSonf / commonTimeSong * 100, "length": commonTimeSong })
+        setCurrentTrack({ ...currentTrack, "progress": currentTimeSonf / commonTimeSong * 100, "length": commonTimeSong })
     }
 
     // нажатие на кноку "Пуск"
@@ -38,22 +41,22 @@ export function MainContent() {
 
     // Изменение времени в прогресс баре
     const heandlerChangeCurrentTime = (event: any) => {
-        let currentTime = Number(clickRef.current?.clientWidth);
+        let currentTime = Number(navigatorBarElement.current?.clientWidth);
         const offset = event.nativeEvent.offsetX;
         const progressBlock = offset / currentTime * 100;
 
-        audioElement.current.currentTime = progressBlock / 100 * currentSong.length;
+        audioElement.current.currentTime = progressBlock / 100 * currentTrack.length;
     }
 
     // Предыдущая песня
     const heandlerSkipBack = () => {
-        const index = songsData.findIndex((parSong: { nameTrack: string; }) => parSong.nameTrack === currentSong.nameTrack);
+        const index = tracksData.findIndex((parSong: { nameTrack: string; }) => parSong.nameTrack === currentTrack.nameTrack);
 
         if (index === 0) {
-            setCurrentSong(songsData[songsData.length - 1])
+            setCurrentTrack(tracksData[tracksData.length - 1])
         }
         else {
-            setCurrentSong(songsData[index - 1])
+            setCurrentTrack(tracksData[index - 1])
         }
 
         setIsPlaying(true);
@@ -62,13 +65,13 @@ export function MainContent() {
 
     // Следующая песня
     const heandlerSkipToNext = () => {
-        const indexNext = songsData.findIndex((parSong: { nameTrack: string; }) => parSong.nameTrack === currentSong.nameTrack);
+        const indexNext = tracksData.findIndex((parSong: { nameTrack: string; }) => parSong.nameTrack === currentTrack.nameTrack);
 
-        if (indexNext === songsData.length - 1) {
-            setCurrentSong(songsData[0])
+        if (indexNext === tracksData.length - 1) {
+            setCurrentTrack(tracksData[0])
         }
         else {
-            setCurrentSong(songsData[indexNext + 1])
+            setCurrentTrack(tracksData[indexNext + 1])
         }
 
         setIsPlaying(true);
@@ -101,12 +104,12 @@ export function MainContent() {
                     <h1>Главная</h1>
                     <h2>Лучшие треки</h2>
                     <div className="main-content_container__tracks">
-                        {songsData.map((element: any) => (
+                        {tracksData.map((element: any) => (
                             <>
                                 <div className="card-track" key={element.index} onClick={
                                     () => {
                                         setModalFlag(true);
-                                        setCurrentSong(songsData[element.index]);
+                                        setCurrentTrack(tracksData[element.index]);
                                     }
                                 }>
                                     <div className="card-track_img-container">
@@ -125,20 +128,20 @@ export function MainContent() {
                 modalFlag &&
                 <>
                     <div className="modal-background" onClick={heandlerModalClickArea} />
-                    <div className="modal-container" key={currentSong.index}>
+                    <div className="modal-container" key={currentTrack.index}>
                         <div className="modal-container_img">
-                            <img src={currentSong.preViewImagePath} alt="превью" />
+                            <img src={currentTrack.preViewImagePath} alt="превью" />
                         </div>
                         <div className="modal-container_navigation">
-                            <div className="modal-container_navigation_wrapper" onClick={heandlerChangeCurrentTime} ref={clickRef}>
-                                <div className="modal-container_seek_bar" style={{ width: `${currentSong.progress + "%"}` }}></div>
+                            <div className="modal-container_navigation_wrapper" onClick={heandlerChangeCurrentTime} ref={navigatorBarElement}>
+                                <div className="modal-container_seek_bar" style={{ width: `${currentTrack.progress + "%"}` }}></div>
                             </div>
                         </div>
                         <div className="modal-container_audio" >
-                            <audio key={currentSong.index} src={currentSong.trackPath} ref={audioElement} onTimeUpdate={onPlaying} />
+                            <audio key={currentTrack.index} src={currentTrack.trackPath} ref={audioElement} onTimeUpdate={onPlaying} />
                         </div>
-                        <h1>{currentSong.nameTrack}</h1>
-                        <h2>{currentSong.authorTrack}</h2>
+                        <h1>{currentTrack.nameTrack}</h1>
+                        <h2>{currentTrack.authorTrack}</h2>
                         <div className="modal-container_tool-bar">
                             <div className="modal-container_controls">
                                 <BsFillSkipStartCircleFill className='modal-container_btn_action' onClick={heandlerSkipBack} />
