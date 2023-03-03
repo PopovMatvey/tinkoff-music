@@ -8,7 +8,7 @@ app.use(express.json());                    // use json for requests
 require('dotenv').config();                 // work with .env file
 const nodeMailer = require('nodemailer')    // mail lib
 /*Varibles*/
-const PORT_APP = 2000;                      // app port
+const PORT_APP = 2001;                      // app port
 const urlRequest = '/api/mail/';             // url request api
 
 app.use(cors());
