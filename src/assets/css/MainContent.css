@@ -5,6 +5,13 @@
     padding: 50px 10%;
 }
 
+@media screen and (max-width:300px) {
+
+    .main-content  {
+        padding: 50px 10%;
+    }
+}
+
 .main-content_container {
     width: 100%;
     height: 100%;

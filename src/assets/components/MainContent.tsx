@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import '../css/MainContent.css'
 import "../css/ModalTrack.css"
 import "../css/CardTrack.css"
@@ -9,8 +9,6 @@ import { useCurrentSong } from "../hook/useCurrentSong";
 import { useRefNavigatorBarElement } from "../hook/useRefNavigatorBarElement";
 import { useModalFlag } from "../hook/useModalFlaf";
 import { useRefAudioElement } from "../hook/useRefAudioElement";
-// import { CardTrack } from "./CardTrack";
-// import { ModalTrack } from "./ModalTrack";
 
 // Основной контент
 export function MainContent() {
@@ -79,14 +77,15 @@ export function MainContent() {
     }
 
     // проиграть аудио
-    const playAudio = () => {
+    const playAudio = useCallback(() => {
         audioElement.current.play();
-    }
+    }, [audioElement])
 
     // Остановить аудио
-    const stopAudio = () => {
+    const stopAudio = useCallback(() => {
         audioElement.current.pause();
-    }
+    }, [audioElement])
+
 
     useEffect(() => {
         if (isPlaying) {
@@ -95,7 +94,7 @@ export function MainContent() {
         else {
             stopAudio();
         }
-    }, [isPlaying]);
+    }, [isPlaying, playAudio, stopAudio]);
 
     return (
         <>
@@ -147,7 +146,8 @@ export function MainContent() {
                                 <BsFillSkipStartCircleFill className='modal-container_btn_action' onClick={heandlerSkipBack} />
                                 {isPlaying ? <BsFillPauseCircleFill className='modal-container_btn_action modal-container_pp' onClick={heandlerPlayPause} /> : <BsFillPlayCircleFill className='btn_action modal-container_pp' onClick={heandlerPlayPause} />}
                                 <BsFillSkipEndCircleFill className='modal-container_btn_action' onClick={heandlerSkipToNext} />
-                            </div></div>
+                            </div>
+                        </div>
                     </div>
                 </>
             }
