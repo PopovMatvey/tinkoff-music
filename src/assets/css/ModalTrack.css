@@ -21,7 +21,6 @@
     background: #bcbcbc;
 }
 
-
 @media screen and (max-height:800px) {
     .modal-container {
         top: 15%;
