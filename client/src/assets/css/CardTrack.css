@@ -1,0 +1,49 @@
+.card-track_container{
+    padding: 10px;
+}
+
+.card-track {
+    width: 250px;
+    height: 300px;
+    margin: 20px 10px;
+    border-radius: 20px;
+    transition: 1s all;
+}
+
+.card-track:hover {
+    background: #969494;
+    cursor: pointer;
+}
+
+.card-track h1,
+.card-track h2,
+.card-track h3,
+.card-track h4,
+.card-track h5,
+.card-track h6 {
+    font-family: 'BerlinType';
+    margin: 0 5px;
+    padding: 0;
+}
+
+.card-track h1 {
+    margin: 15px 5px;
+    font-size: 24px;
+}
+
+.card-track h2 {
+    font-size: 18px;
+}
+
+.card-track_img-container {
+    width: 100%;
+    height: 200px;
+    background: #b1b1b1;
+    border-radius: 20px;
+}
+
+.card-track_img-container img {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}

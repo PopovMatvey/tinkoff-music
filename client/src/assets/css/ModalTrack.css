@@ -1,0 +1,165 @@
+.modal-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #ffffff99;
+}
+
+.modal-container {
+    position: fixed;
+    top: 25%;
+    left: 40%;
+    width: 30%;
+    height: auto;
+    min-width: 300px;
+    max-width: 400px;
+    min-height: 300px;
+    padding: 50px;
+    border-radius: 50px;
+    background: #bcbcbc;
+}
+
+@media screen and (max-height:800px) {
+    .modal-container {
+        top: 15%;
+    }
+}
+
+@media screen and (max-height:600px) {
+    .modal-container {
+        top: 10%;
+    }
+}
+
+@media screen and (max-height:550px) {
+    .modal-container {
+        top: 5%;
+    }
+}
+
+@media screen and (max-width:1100px) {
+    .modal-container {
+        left: 35%;
+    }
+}
+
+@media screen and (max-width:800px) {
+    .modal-container {
+        left: 30%;
+    }
+}
+
+@media screen and (max-width:650px) {
+    .modal-container {
+        left: 25%;
+    }
+}
+
+@media screen and (max-width:550px) {
+    .modal-container {
+        left: 20%;
+    }
+}
+
+@media screen and (max-width:400px) {
+    .modal-container {
+        left: 15%;
+    }
+}
+
+@media screen and (max-width:450px) {
+    .modal-container {
+        left: 10%;
+    }
+}
+
+@media screen and (max-width:350px) {
+    .modal-container {
+        left: 2%;
+    }
+}
+
+@media screen and (max-width:300px) {
+    .modal-container {
+        left: 0%;
+    }
+}
+
+.modal-container_img {
+    display: flex;
+    justify-content: center;
+    border-radius: 30px;
+    margin: 0px auto;
+}
+
+.modal-container_img img {
+    width: auto;
+    height: 200px;
+    border-radius: 30px;
+}
+
+.modal-container_navigation {
+    width: 90%;
+    height: 5px;
+    margin: 15px auto;
+}
+
+.modal-container_navigation_wrapper {
+    min-width: 100%;
+    background-color: rgba(119, 119, 119, 0.781);
+    height: 5px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.modal-container_seek_bar {
+    width: 0;
+    height: 100%;
+    background-color: rgb(0, 0, 0);
+    border-radius: 30px;
+}
+
+.modal-container h1 {
+    font-family: "BerlinTypeBold";
+    font-size: 30px;
+    margin: 10px 0px;
+}
+
+.modal-container h2 {
+    font-family: "BerlinType";
+    font-size: 16px;
+}
+
+.modal-container_tool-bar {
+    height: auto;
+    margin: 5px 0px;
+}
+
+.modal-container_controls {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.modal-container_tool-bar__repeate {
+    width: 10px;
+    height: 10px;
+    background: url('../images/tool-bar/repeat.png') 0% 0%/ 100% 100% no-repeat;
+}
+
+.modal-container_btn_action {
+    font-size: 2rem;
+    margin: 0 1rem;
+    cursor: pointer;
+    transition: 1s all;
+}
+
+.modal-container_pp {
+    font-size: 3rem;
+}
+
+.modal-container_btn_action:hover {
+    color: rgba(188, 158, 158, 0.9);
+}

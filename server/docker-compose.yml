@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+
+  app:
+    container_name: "java-app-container"
+    image: 'tinkoff-music-platform'
+    build: ./
+    depends_on:
+      - postgres
+      - minio
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/music-platform
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=g12nokona
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+
+  postgres:
+    container_name: "postgres-container"
+    image: 'postgres'
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: "music-platform"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "g12nokona"
+
+  minio:
+    container_name: "minio-container"
+    restart: on-failure
+    image: minio/minio
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - ./storage/minio:/data
+    environment:
+      MINIO_ROOT_USER: zhurkin
+      MINIO_ROOT_PASSWORD: g12nokona
+    command: server --console-address ":9001" /data
