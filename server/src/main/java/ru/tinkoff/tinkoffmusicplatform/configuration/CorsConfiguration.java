@@ -15,7 +15,8 @@ public class CorsConfiguration implements WebMvcConfigurer {
                 .allowedOrigins(
                     "http://localhost:8080",
                     "http://localhost:3000",
-                    "http://localhost:2002"
+                    "http://localhost:2002",
+                    "http://62.113.107.56:8080"
                 )
                 .allowCredentials(true);
     }
