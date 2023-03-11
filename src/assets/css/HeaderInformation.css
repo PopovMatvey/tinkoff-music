@@ -1,0 +1,18 @@
+/* Стили информации "Шапки" */
+.header-information {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+.header-information h1 {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.header-information img {
+    width: 20%;
+    height: auto;
+    margin-left: 10%;
+}
