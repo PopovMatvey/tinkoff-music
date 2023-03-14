@@ -20,8 +20,8 @@ export function MainContent() {
     const { isPlaying, setIsPlaying } = useIsPlaying();
     const { navigatorBarElement } = useRefNavigatorBarElement();
     const { audioElement } = useRefAudioElement();
-    const {searchInputValue, setSearchInputValue} = useSearchInputValue();
-    
+    const { searchInputValue, setSearchInputValue } = useSearchInputValue();
+
     const [checkFillCurrentTracks, setCheckFillCurrentTracks] = useState(true);
 
     // Обработка области вокруг модального окна
@@ -131,7 +131,7 @@ export function MainContent() {
 
     function findDetermBooks(parInputText: string, parArray: any) {
         const regString = `^${parInputText}`;
-        const regex = new RegExp(regString);
+        const regex = new RegExp(regString, 'i');
 
         return searchBook(parArray, regex);
     }
