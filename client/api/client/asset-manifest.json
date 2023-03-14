@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.a075505d.css",
-    "main.js": "/static/js/main.8058f6c6.js",
+    "main.css": "/static/css/main.0ca7eb59.css",
+    "main.js": "/static/js/main.bd4f294c.js",
     "static/js/787.fcf432be.chunk.js": "/static/js/787.fcf432be.chunk.js",
     "static/media/BerlinType-Bold.otf": "/static/media/BerlinType-Bold.9dab94178b1737b870ba.otf",
     "static/media/BerlinType-Regular.otf": "/static/media/BerlinType-Regular.1bbba4deb8775ccac9dc.otf",
     "static/media/tinkoff-music-logo.png": "/static/media/tinkoff-music-logo.89985c3a6970f40ff2a9.png",
     "static/media/Concrete-Regular.otf": "/static/media/Concrete-Regular.fcb1090140aa5427f444.otf",
     "index.html": "/index.html",
-    "main.a075505d.css.map": "/static/css/main.a075505d.css.map",
-    "main.8058f6c6.js.map": "/static/js/main.8058f6c6.js.map",
+    "main.0ca7eb59.css.map": "/static/css/main.0ca7eb59.css.map",
+    "main.bd4f294c.js.map": "/static/js/main.bd4f294c.js.map",
     "787.fcf432be.chunk.js.map": "/static/js/787.fcf432be.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a075505d.css",
-    "static/js/main.8058f6c6.js"
+    "static/css/main.0ca7eb59.css",
+    "static/js/main.bd4f294c.js"
   ]
 }
