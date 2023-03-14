@@ -15,9 +15,9 @@ export function useTrackData() {
                     index: i,
                     nameTrack: parArray[i].title,
                     authorTrack: parArray[i].author,
-                    preViewImagePath: "/tracks/images/Travis_Scott_Astroworld.jpg",
+                    preViewImagePath: `/tracks/images/images_tracks/${i}.jpg`,
                     genre: parArray[i].genre,
-                    trackPath: "tracks/audio/muzlome_Travis_Scott_-_SICKO_MODE_57796090.mp3",
+                    trackPath: `tracks/audio/music_tracks/${i}.mp3`,
                     progress: 0,
                     length: 0,
                 }

@@ -1,0 +1,23 @@
+.main-content_content__search-panel {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+.main-content_content__search-panel_element {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    font-size: 16px;
+}
+
+.main-content_content__search-panel_element h3 {
+    margin: 5px 15px;
+}
+
+.main-content_content__search-panel_element input {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px 20px;
+}
