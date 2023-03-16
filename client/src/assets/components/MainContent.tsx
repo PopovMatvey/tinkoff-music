@@ -133,10 +133,10 @@ export function MainContent() {
         const regString = `^${parInputText}`;
         const regex = new RegExp(regString, 'i');
 
-        return searchBook(parArray, regex);
+        return searchTrack(parArray, regex);
     }
 
-    function searchBook(parArray: any, parRegex: any) {
+    function searchTrack(parArray: any, parRegex: any) {
         const returnedArray = [];
 
         for (let i = 0; i < parArray.length; i++) {
