@@ -18,33 +18,25 @@ app.use(cors());
 app.get(`${urlRequest}`, (request, response) => {
     response.status(200).json(
         [
-            {
-                "index": 0,
-                "nameTrack": "Drake - Forever",
-                "authorTrack": "акак",
-                "preViewImagePath": "/tracks/images/Travis_Scott_Astroworld.jpg",
-                "trackPath": "tracks/audio/muzlome_Travis_Scott_-_SICKO_MODE_57796090.mp3",
-                "progress": 0,
-                "length": 0,
-            },
-            {
-                "index": 1,
-                "nameTrack": "Linking Park - In the end",
-                "authorTrack": "seonfoi",
-                "preViewImagePath": "/tracks/images/JackBoys.jpg",
-                "trackPath": "tracks/audio/travis_scott_-_goosebumps_feat_kendrick_lamar_muzati.net.mp3",
-                "progress": 0,
-                "length": 0,
-            },
-            {
-                "index": 2,
-                "nameTrack": "Travis Scott - Stop trina be God",
-                "authorTrack": "seoццйnfoi",
-                "preViewImagePath": "/tracks/images/Travis_Scott_Astroworld.jpg",
-                "trackPath": "tracks/audio/muzlome_Travis_Scott_-_SICKO_MODE_57796090.mp3",
-                "progress": 0,
-                "length": 0,
-            },
+            { "id": 101, "title": "Under the green sky", "author": "ATL", "genre": "Hip-Hop", "picturePath": "src/main/resources/songs/under_the_green_sky.jpg", "songPath": null },
+            { "id": 102, "title": "Big boy slime", "author": "OG BUDA", "genre": "Hip-Hop", "picturePath": "src/main/resources/songs/big_boy_slime.jpg", "songPath": null },
+            { "id": 103, "title": "Blues", "author": "Markul", "genre": "Hip-Hop", "picturePath": "src/main/resources/songs/blues.jpg", "songPath": null },
+            { "id": 104, "title": "Sicko mode", "author": "Travis Scott", "genre": "Hip-Hop", "picturePath": "src/main/resources/songs/sicko_mode.jpg", "songPath": null },
+            { "id": 105, "title": "Lovely", "author": "Billie Eilish", "genre": "Pop", "picturePath": "src/main/resources/songs/lovely.jpg", "songPath": null },
+            { "id": 106, "title": "Rockstar", "author": "DaBaby", "genre": "Hip-Hop", "picturePath": "src/main/resources/songs/rockstar.jpg", "songPath": null },
+            { "id": 107, "title": "Never gonna give your up", "author": "Rick Astly", "genre": "Dance-pop", "picturePath": "src/main/resources/songs/never_gonna_give_your_up.jpg", "songPath": null },
+            { "id": 108, "title": "We will rock you", "author": "Queen", "genre": "Rock", "picturePath": "src/main/resources/songs/we_will_rock_you.jpg", "songPath": null },
+            { "id": 109, "title": "One Republic", "author": "Good Life", "genre": "Rock", "picturePath": "src/main/resources/songs/one_republic.jpg", "songPath": null },
+            { "id": 110, "title": "Miyagi & Andy Panda", "author": "Yamakasi", "genre": "Rap", "picturePath": null, "songPath": null },
+            { "id": 111, "title": "Post Malone & Ozzy Osbourne", "author": "Take what you want", "genre": "Rap", "picturePath": null, "songPath": null },
+            { "id": 112, "title": "kizaru", "author": "Russian most wanted", "genre": "Rap", "picturePath": null, "songPath": null },
+            { "id": 113, "title": "Oliver Tree", "author": "Cigarettes", "genre": "Alternative Pop", "picturePath": null, "songPath": null },
+            { "id": 114, "title": "Oliver Tree", "author": "Life Goes On", "genre": "Alternative Pop", "picturePath": null, "songPath": null },
+            { "id": 115, "title": "Oliver Tree", "author": "Miracle man", "genre": "Alternative Pop", "picturePath": null, "songPath": null },
+            { "id": 116, "title": "Valery Meladze", "author": "Heaven", "genre": "Russian Pop", "picturePath": null, "songPath": null },
+            { "id": 117, "title": "AC/DC", "author": "Highway To Hell", "genre": "Rock", "picturePath": null, "songPath": null },
+            { "id": 118, "title": "ATL", "author": "Serpentine", "genre": "Rap", "picturePath": null, "songPath": null },
+            { "id": 119, "title": "Skryptonite", "author": "Chains", "genre": "Rap", "picturePath": null, "songPath": null }
         ]
     )
 });
